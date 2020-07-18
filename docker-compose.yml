@@ -26,12 +26,11 @@ services:
     ports:
       - "127.0.0.1:9000:9000"
     networks:
-      - backend
+      - sonarnet
     environment:
-    - sonar.jdbc.username=movie
-    - sonar.jdbc.password=movie
-    - sonar.jdbc.url=jdbc:mariadb://db/movie
-    - sonar.search.javaAdditionalOpts=-Dbootstrap.system_call_filter=false
+      - sonar.jdbc.username=sonar
+      - sonar.jdbc.password=sonar
+      - sonar.jdbc.url=jdbc:postgresql://sonardb/sonar
     volumes:
       - sonarqube_conf:/opt/sonarqube/conf
       - sonarqube_data:/opt/sonarqube/data
@@ -42,6 +41,18 @@ services:
       nofile:
         soft: 65535
         hard: 65535
+
+  sonardb:
+    image: postgres
+    networks:
+      - sonarnet
+    environment:
+      - POSTGRES_USER=sonar
+      - POSTGRES_PASSWORD=sonar
+    volumes:
+      - postgresql:/var/lib/postgresql
+      - postgresql_data:/var/lib/postgresql/data
+
 
   db:
     image: mariadb
@@ -54,9 +65,14 @@ services:
       MYSQL_PASSWORD: movie
     volumes:
       - mariadb:/var/lib/mysql
+    ports:
+      - "127.0.0.1:3306:3306"
+    expose:
+      - 3306
 
 networks:
   backend:
+  sonarnet:
 
 volumes:
   sonarqube_conf:
@@ -64,3 +80,5 @@ volumes:
   sonarqube_extensions:
   sonarqube_bundled-plugins:
   mariadb:
+  postgresql:
+  postgresql_data:
