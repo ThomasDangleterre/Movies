@@ -1,0 +1,6 @@
+language: java
+jdk: openjdk-ea
+
+install: true
+
+script: mvn clean verify

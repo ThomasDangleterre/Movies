@@ -1,0 +1,66 @@
+version: "3"
+
+services:
+  movie-app:
+    build: .
+    restart: on-failure
+    networks:
+      - backend
+    depends_on:
+      - db
+    environment:
+      - DATABASE_HOST=db
+      - DATABASE_USER=movie
+      - DATABASE_PASSWORD=movie
+      - DATABASE_NAME=movie
+      - DATABASE_PORT=3306
+    ports:
+      - "127.0.0.1:8000:8000"
+    expose:
+      - 8000
+
+  sonarqube:
+    image : sonarqube
+    expose:
+      - 9000
+    ports:
+      - "127.0.0.1:9000:9000"
+    networks:
+      - backend
+    environment:
+    - sonar.jdbc.username=movie
+    - sonar.jdbc.password=movie
+    - sonar.jdbc.url=jdbc:mariadb://db/movie
+    - sonar.search.javaAdditionalOpts=-Dbootstrap.system_call_filter=false
+    volumes:
+      - sonarqube_conf:/opt/sonarqube/conf
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_extensions:/opt/sonarqube/extensions
+      - sonarqube_bundled-plugins:/opt/sonarqube/lib/bundled-plugins
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 65535
+        hard: 65535
+
+  db:
+    image: mariadb
+    networks:
+      - backend
+    environment:
+      MYSQL_ROOT_PASSWORD: movie
+      MYSQL_DATABASE: movie
+      MYSQL_USER: movie
+      MYSQL_PASSWORD: movie
+    volumes:
+      - mariadb:/var/lib/mysql
+
+networks:
+  backend:
+
+volumes:
+  sonarqube_conf:
+  sonarqube_data:
+  sonarqube_extensions:
+  sonarqube_bundled-plugins:
+  mariadb:
