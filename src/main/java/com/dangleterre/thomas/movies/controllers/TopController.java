@@ -1,14 +1,15 @@
 package com.dangleterre.thomas.movies.controllers;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class MainController {
+@RequestMapping("/top")
+public class TopController {
 
-    @RequestMapping("/")
-    public String home() {
-        return "Hello Docker World";
+    @GetMapping
+    public String get(){
+        return "GET";
     }
-
 }
