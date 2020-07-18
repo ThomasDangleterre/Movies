@@ -5,11 +5,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "com.dangleterre.thomas.movies.*")
+@ComponentScan(basePackages = {"com.dangleterre.thomas.movies.*","com.dangleterre.thomas.movies"})
 public class MoviesApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MoviesApplication.class, args);
+		SpringApplication.run(MoviesApplication.class);
 	}
 
 }
