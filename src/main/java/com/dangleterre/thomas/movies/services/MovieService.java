@@ -21,7 +21,7 @@ public class MovieService {
     @Autowired
     MovieRepository movieRepository;
 
-    public String fetchMoviesFromOmdbApi(String searchedTitle) throws JsonProcessingException {
+    public List<MovieEntity> fetchMoviesFromOmdbApi(String searchedTitle) throws JsonProcessingException {
         //@TODO add constante for api key
         final String uri = "http://www.omdbapi.com/?s=\"" + searchedTitle + "\"&apikey=f707c09";
 
@@ -32,7 +32,7 @@ public class MovieService {
         SearchBean searchBean = mapper.readValue(result, SearchBean.class);
         List<MovieEntity> moviesEntitiesSaved = saveMoviesToDatabase(searchBean.getMovies());
 
-        return moviesEntitiesSaved.toString();
+        return moviesEntitiesSaved;
     }
 
     public List<MovieEntity> saveMoviesToDatabase(List<MovieBean> movieBeanList) {
@@ -54,11 +54,16 @@ public class MovieService {
     }
 
     public MovieEntity setMovieYearFromBean(MovieEntity movieEntity, MovieBean movieBean) {
-        if (movieBean.getYear() != null) {
+        if (movieBean.getYear() != null && !movieBean.getYear().isEmpty()) {
             if (movieBean.getYear().contains("–")) {
                 String yearsArray[] = movieBean.getYear().split(Pattern.quote("–"));
-                movieEntity.setYearBegin(Long.parseLong(yearsArray[0]));
-                movieEntity.setYearEnd(Long.parseLong(yearsArray[1]));
+                if(yearsArray.length > 1 ) {
+                    movieEntity.setYearBegin(Long.parseLong(yearsArray[0]));
+                    movieEntity.setYearEnd(Long.parseLong(yearsArray[1]));
+                }else {
+                    movieEntity.setYearBegin(Long.parseLong(yearsArray[0]));
+                    movieEntity.setYearEnd(Long.parseLong(yearsArray[0]));
+                }
             } else {
                 movieEntity.setYearBegin(Long.parseLong(movieBean.getYear()));
                 movieEntity.setYearEnd(Long.parseLong(movieBean.getYear()));

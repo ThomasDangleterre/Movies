@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/movies")
@@ -22,8 +23,8 @@ public class MoviesController {
         if (search == null || search.getTitle() == null || search.getTitle().isEmpty()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("A Title must be set !");
         }
-        String result = movieService.fetchMoviesFromOmdbApi(search.getTitle());
-        return ResponseEntity.ok(result);
+        List<MovieEntity> moviesSaved= movieService.fetchMoviesFromOmdbApi(search.getTitle());
+        return ResponseEntity.ok(moviesSaved);
     }
 
     @GetMapping
