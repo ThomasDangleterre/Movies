@@ -21,6 +21,8 @@ import org.springframework.web.context.WebApplicationContext;
 
 import javax.persistence.EntityNotFoundException;
 
+import java.util.ArrayList;
+
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
@@ -46,7 +48,7 @@ class MoviesControllerTest {
 
     @Test
     void postTest() throws Exception {
-        doReturn("OK").when(movieServiceMock).fetchMoviesFromOmdbApi(anyString());
+        doReturn(new ArrayList<MovieEntity>()).when(movieServiceMock).fetchMoviesFromOmdbApi(anyString());
         SearchByTitleBean searchByTitleBean = new SearchByTitleBean();
         searchByTitleBean.setTitle("hello");
         String jsonBody = new ObjectMapper().writeValueAsString(searchByTitleBean);
