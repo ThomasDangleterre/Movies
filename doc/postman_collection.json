@@ -1,178 +1,268 @@
 {
-  "info": {
-    "_postman_id": "1d594003-6b5c-4e2b-b3b2-17713d32732a",
-    "name": "Movies App testing",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-  },
-  "item": [
-    {
-      "name": "movies",
-      "item": [
-        {
-          "name": "get movies",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "127.0.0.1:8000/movies",
-              "host": [
-                "127",
-                "0",
-                "0",
-                "1"
-              ],
-              "port": "8000",
-              "path": [
-                "movies"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "post movies",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "url": {
-              "raw": "127.0.0.1:8000/movies",
-              "host": [
-                "127",
-                "0",
-                "0",
-                "1"
-              ],
-              "port": "8000",
-              "path": [
-                "movies"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "delete movie id",
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "url": {
-              "raw": "127.0.0.1:8000/movies/1",
-              "host": [
-                "127",
-                "0",
-                "0",
-                "1"
-              ],
-              "port": "8000",
-              "path": [
-                "movies",
-                "1"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "update movie id",
-          "request": {
-            "method": "PUT",
-            "header": [],
-            "url": {
-              "raw": "127.0.0.1:8000/movies/1",
-              "host": [
-                "127",
-                "0",
-                "0",
-                "1"
-              ],
-              "port": "8000",
-              "path": [
-                "movies",
-                "1"
-              ]
-            }
-          },
-          "response": []
-        }
-      ],
-      "protocolProfileBehavior": {}
-    },
-    {
-      "name": "comments",
-      "item": [
-        {
-          "name": "get comment ",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "127.0.0.1:8000/comments/1",
-              "host": [
-                "127",
-                "0",
-                "0",
-                "1"
-              ],
-              "port": "8000",
-              "path": [
-                "comments",
-                "1"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "post comment ",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "url": {
-              "raw": "127.0.0.1:8000/comments",
-              "host": [
-                "127",
-                "0",
-                "0",
-                "1"
-              ],
-              "port": "8000",
-              "path": [
-                "comments"
-              ]
-            }
-          },
-          "response": []
-        }
-      ],
-      "protocolProfileBehavior": {}
-    },
-    {
-      "name": "tops",
-      "item": [
-        {
-          "name": "get top",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "127.0.0.1:8000/top&rangedate=\"between this and this\"",
-              "host": [
-                "127",
-                "0",
-                "0",
-                "1"
-              ],
-              "port": "8000",
-              "path": [
-                "top&rangedate=\"between this and this\""
-              ]
-            }
-          },
-          "response": []
-        }
-      ],
-      "protocolProfileBehavior": {}
-    }
-  ],
-  "protocolProfileBehavior": {}
+	"info": {
+		"_postman_id": "2743b021-419a-46b7-acbe-ba9d067189b0",
+		"name": "Movies App testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "movies",
+			"item": [
+				{
+					"name": "get movies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/movies",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post movies",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Hello\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8000/movies?",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"movies"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete movie id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/movies/4",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"movies",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update movie id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8000/movies/1",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"movies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[EXTERNAL] omdbapi by title",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://www.omdbapi.com/?s=hello&apikey=f707c09",
+							"protocol": "http",
+							"host": [
+								"www",
+								"omdbapi",
+								"com"
+							],
+							"path": [
+								""
+							],
+							"query": [
+								{
+									"key": "s",
+									"value": "hello"
+								},
+								{
+									"key": "apikey",
+									"value": "f707c09"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "comments",
+			"item": [
+				{
+					"name": "get comment ",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8000/comments?id=1",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"comments"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post comment ",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"idMovie\": 1,\n   \"commentText\": \"Nice !\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8000/comments",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"comments"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "tops",
+			"item": [
+				{
+					"name": "get top",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/top?dateBegin=2000&dateEnd=2021",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"top"
+							],
+							"query": [
+								{
+									"key": "dateBegin",
+									"value": "2000"
+								},
+								{
+									"key": "dateEnd",
+									"value": "2021"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
 }
