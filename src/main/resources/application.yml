@@ -1,12 +1,18 @@
-
 logging:
   level:
     org.springframework: ERROR
     com.mkyong: DEBUG
 
 spring:
-  profiles:
-    active: dev
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://127.0.0.1:3306/movie
+    username: root
+    password: movie
+  jpa:
+    database-platform: org.hibernate.dialect.MariaDBDialect
+    hibernate:
+      ddl-auto: update
 
 server:
   port: 8000
