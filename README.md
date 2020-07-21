@@ -60,7 +60,7 @@ Maven :
     - <del>mariadb-java-client : persistence </del> replaced by H2 for easy installation
     - h2 : persistence <del>(test only)</del>
     - mockito : mocking (test only)
-    - junit : fo testing purpose(test only)
+    - junit : for testing purpose(test only)
     - lombok : clean code
 - plugins :
     - spring boot maven plugin
@@ -82,7 +82,7 @@ Docker :
 Execute these commands :
 
 `docker-compose build --no-cache movie-app` 
-( Could take few minutes the first time as it has to download all dependencies)
+( This could take few minutes the first time as it has to download all dependencies)
 
 `docker-compose run --service-ports movie-app`
 
@@ -101,7 +101,8 @@ run :
 `java -jar ./target/movies-0.0.1-SNAPSHOT.jar`
 
 ### Launch SonarQube analysis
-SonarQube has to be up on por 9000. You can use this command to have a docker container running a SonarQube server:
+SonarQube has to be up on port 9000. 
+You can use this command to have a docker container running a SonarQube server:
 
 `docker-compose run sonarqube`
 
