@@ -23,10 +23,10 @@ public class MoviesController {
     MovieService movieService;
 
     @PostMapping
-    @ApiOperation(value = "Fetch movies data from external api to database", notes = "Request body should contain only movie title, and its presence should be validated. Based on passed title, other movie details should be fetched from http://www.omdbapi.com ​ (or other similar, public movie database) and saved to the application database. Request response should include full movie object, along with all data fetched from external API.")
+    @ApiOperation(value = "Fetch movies data from external api to database", notes = "Request body should contain only movie title, and its presence should be validated. Based on passed title, other movie details should be fetched from http://www.omdbapi.com ​ (or other similar, public movie database) and saved to the application database.Request response should include full movie object, along with all data fetched from external API.")
     @ApiResponses({
             @ApiResponse(code = 200, message = "Success", response = List.class),
-            @ApiResponse(code = 404, message = "Not found", response = String.class)
+            @ApiResponse(code = 400, message = "Bad Request", response = String.class)
     })
     public ResponseEntity post(@RequestBody SearchByTitleBean search) throws JsonProcessingException {
         if (search == null || search.getTitle() == null || search.getTitle().isEmpty()) {
@@ -40,7 +40,6 @@ public class MoviesController {
     @ApiOperation(value = "List of all movies in database", notes = "Get the movie if it exists and then delete it and returning a response")
     @ApiResponses({
             @ApiResponse(code = 200, message = "Success", response = List.class),
-            @ApiResponse(code = 404, message = "Not found", response = String.class)
     })
     public String get() {
         return movieService.findAllMovies().toString();

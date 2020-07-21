@@ -23,7 +23,7 @@ external API.
 - Additional filtering, sorting is fully optional - but some implementation is a
 bonus.
 
-**DELETE /movies/<movie-id>/:**
+**<div>DELETE /movies/<movie-id>/:</div>**
 - ​ Get the movie if it exists and then delete it and returning a response.
 UPDATE /movies/<movie-id>/:
 - Update the movie by sending a PUT request to the URL with the data you want to
@@ -90,7 +90,7 @@ NB :`--service-ports` argument is needed to access container from `127.0.0.1`.
 Once these commands executed, spring boot app is listening on port 8000.
 
 ### Launch application without docker
-You will need maven installed on your PC and a JDK version 14.
+You will need maven installed on your computer and a JDK version 14.
 
 build :
 
@@ -109,7 +109,7 @@ You can use this command to have a docker container running a SonarQube server:
 Then you can launch this command to run analysis :
 `mvn clean verify sonar:sonar`
 
-Visit the link to check sonar analysis :
+Visit this link to check sonar analysis :
 `http://localhost:9000/`
 
 ## Documentation 

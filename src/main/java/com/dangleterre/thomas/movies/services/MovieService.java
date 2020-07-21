@@ -8,9 +8,11 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import javax.annotation.Resource;
 import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +28,8 @@ public class MovieService {
     @Value("${external.api-key}")
     private String apiKey;
 
-    RestTemplate restTemplate = new RestTemplate();
+
+    public RestTemplate restTemplate = new RestTemplate();
 
     /**
      * Fecth movies from external API and save movies in database
@@ -48,6 +51,7 @@ public class MovieService {
 
         return moviesEntitiesSaved;
     }
+
 
     /**
      * Convert a list of movie beans into movie entities and saved them in db
@@ -75,9 +79,9 @@ public class MovieService {
      */
     public MovieEntity convertMovieBeanToEntity(MovieBean movieBean) {
         MovieEntity movieEntity = new MovieEntity();
+        movieEntity = setMovieYearFromBean(movieEntity, movieBean);
         movieEntity.setExternalId(movieBean.getExternalId());
         movieEntity.setTitle(movieBean.getTitle());
-        movieEntity = setMovieYearFromBean(movieEntity, movieBean);
         return movieEntity;
     }
 
