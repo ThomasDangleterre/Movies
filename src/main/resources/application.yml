@@ -3,16 +3,16 @@ logging:
     org.springframework: ERROR
     com.mkyong: DEBUG
 
-spring:
-  datasource:
-    driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://127.0.0.1:3306/movie
-    username: root
-    password: movie
-  jpa:
-    database-platform: org.hibernate.dialect.MariaDBDialect
-    hibernate:
-      ddl-auto: update
+hibernate:
+  dialect: org.hibernate.dialect.H2Dialect
+  hbm2ddl:
+    auto: create-drop
 
+jdbc:
+  driverClassName: org.h2.Driver
+  url: jdbc:mem:myDb;DB_CLOSE_DELAY=-1
 server:
   port: 8000
+
+external:
+  api-key: f707c09

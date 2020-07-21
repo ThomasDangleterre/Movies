@@ -4,7 +4,7 @@ hibernate:
     auto: create-drop
 
 jdbc:
-  driverClassName: org.h2.Driver
+  driver-class-name: org.h2.Driver
   url: jdbc:mem:myDb;DB_CLOSE_DELAY=-1
 
 logging:
@@ -14,3 +14,5 @@ logging:
       springframework:
         web: DEBUG
 
+external:
+  api-key: f707c09

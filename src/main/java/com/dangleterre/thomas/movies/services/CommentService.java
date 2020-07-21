@@ -21,6 +21,12 @@ public class CommentService {
     @Autowired
     CommentRepository commentRepository;
 
+    /**
+     * Insert a comment in database
+     * @param postCommentBean
+     * @return CommentEntity saved comment entity
+     * @throws EntityNotFoundException runtime exception
+     */
     public CommentEntity insertCommentInDatabase(PostCommentBean postCommentBean) {
         MovieEntity movieEntity = movieRepository.findById(postCommentBean.getIdMovie()).orElseThrow(EntityNotFoundException::new);
         CommentEntity commentEntity = new CommentEntity();
@@ -30,14 +36,19 @@ public class CommentService {
         return commentEntity;
     }
 
+    /**
+     * Find comments by movie id or all comments if id is null
+     * @param id of a movie
+     * @return list of comment entity
+     */
     public List<CommentEntity> findComments(Long id) {
-        List<CommentEntity> commentRepositoryList = commentRepository.findAll();
+        List<CommentEntity> commentEntitiesList = commentRepository.findAll();
         if (id != null) {
             MovieEntity movieEntity = movieRepository.findById(id).orElseThrow(EntityNotFoundException::new);
-            commentRepositoryList = commentRepositoryList.stream()
+            commentEntitiesList = commentEntitiesList.stream()
                     .filter(comment -> comment.getMovieEntity().getId().equals(movieEntity.getId()))
                     .collect(Collectors.toList());
         }
-        return commentRepositoryList;
+        return commentEntitiesList;
     }
 }
