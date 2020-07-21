@@ -1,18 +1,18 @@
-logging:
-  level:
-    org.springframework: ERROR
-    com.mkyong: DEBUG
-
 hibernate:
   dialect: org.hibernate.dialect.H2Dialect
   hbm2ddl:
     auto: create-drop
 
 jdbc:
-  driverClassName: org.h2.Driver
+  driver-class-name: org.h2.Driver
   url: jdbc:mem:myDb;DB_CLOSE_DELAY=-1
-server:
-  port: 8000
+
+logging:
+  level:
+    org:
+      hibernate: DEBUG
+      springframework:
+        web: DEBUG
 
 external:
   api-key: f707c09

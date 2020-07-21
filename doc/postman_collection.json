@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "1d594003-6b5c-4e2b-b3b2-17713d32732a",
+		"_postman_id": "2743b021-419a-46b7-acbe-ba9d067189b0",
 		"name": "Movies App testing",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -34,8 +34,17 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Hello\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "127.0.0.1:8000/movies",
+							"raw": "127.0.0.1:8000/movies?",
 							"host": [
 								"127",
 								"0",
@@ -45,6 +54,12 @@
 							"port": "8000",
 							"path": [
 								"movies"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
 							]
 						}
 					},
@@ -56,6 +71,37 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
+							"raw": "127.0.0.1:8000/movies/4",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"movies",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update movie id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
 							"raw": "127.0.0.1:8000/movies/1",
 							"host": [
 								"127",
@@ -73,22 +119,30 @@
 					"response": []
 				},
 				{
-					"name": "update movie id",
+					"name": "[EXTERNAL] omdbapi by title",
 					"request": {
-						"method": "PUT",
+						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "127.0.0.1:8000/movies/1",
+							"raw": "http://www.omdbapi.com/?s=hello&apikey=f707c09",
+							"protocol": "http",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"www",
+								"omdbapi",
+								"com"
 							],
-							"port": "8000",
 							"path": [
-								"movies",
-								"1"
+								""
+							],
+							"query": [
+								{
+									"key": "s",
+									"value": "hello"
+								},
+								{
+									"key": "apikey",
+									"value": "f707c09"
+								}
 							]
 						}
 					},
@@ -102,11 +156,23 @@
 			"item": [
 				{
 					"name": "get comment ",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "127.0.0.1:8000/comments/1",
+							"raw": "127.0.0.1:8000/comments?id=1",
 							"host": [
 								"127",
 								"0",
@@ -115,8 +181,13 @@
 							],
 							"port": "8000",
 							"path": [
-								"comments",
-								"1"
+								"comments"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
 							]
 						}
 					},
@@ -127,6 +198,15 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"idMovie\": 1,\n   \"commentText\": \"Nice !\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "127.0.0.1:8000/comments",
 							"host": [
@@ -155,7 +235,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "127.0.0.1:8000/top&rangedate=\"between this and this\"",
+							"raw": "127.0.0.1:8000/top?dateBegin=2000&dateEnd=2021",
 							"host": [
 								"127",
 								"0",
@@ -164,7 +244,17 @@
 							],
 							"port": "8000",
 							"path": [
-								"top&rangedate=\"between this and this\""
+								"top"
+							],
+							"query": [
+								{
+									"key": "dateBegin",
+									"value": "2000"
+								},
+								{
+									"key": "dateEnd",
+									"value": "2021"
+								}
 							]
 						}
 					},

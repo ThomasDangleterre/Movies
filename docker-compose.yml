@@ -5,26 +5,18 @@ services:
     build: .
     restart: on-failure
     networks:
-      - backend
-    depends_on:
-      - db
-    environment:
-      - DATABASE_HOST=db
-      - DATABASE_USER=movie
-      - DATABASE_PASSWORD=movie
-      - DATABASE_NAME=movie
-      - DATABASE_PORT=3306
+      - sonarnet
     ports:
-      - "127.0.0.1:8000:8000"
+      - "8000:8000"
     expose:
       - 8000
 
   sonarqube:
-    image : sonarqube
+    image: sonarqube
     expose:
       - 9000
     ports:
-      - "127.0.0.1:9000:9000"
+      - "9000:9000"
     networks:
       - sonarnet
     depends_on:
@@ -55,25 +47,7 @@ services:
       - postgresql:/var/lib/postgresql
       - postgresql_data:/var/lib/postgresql/data
 
-
-  db:
-    image: mariadb
-    networks:
-      - backend
-    environment:
-      MYSQL_ROOT_PASSWORD: movie
-      MYSQL_DATABASE: movie
-      MYSQL_USER: movie
-      MYSQL_PASSWORD: movie
-    volumes:
-      - mariadb:/var/lib/mysql
-    ports:
-      - "127.0.0.1:3306:3306"
-    expose:
-      - 3306
-
 networks:
-  backend:
   sonarnet:
 
 volumes:
